@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="text-center">
+        <h1>Student Details</h1>
+    </div>
+<mat-horizontal-stepper labelPosition="bottom" linear>
+    <mat-step [stepControl]="profileFormGroup">
+            <ng-template matStepLabel>profile</ng-template>
+            <form [formGroup]="profileFormGroup">
+                <div class="form-group">
+                  <label for="firstName">First Name:</label>
+                  <input id="firstName" formControlName="firstName" class="form-control" placeholder="Enter First Name">
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name:</label>
+                  <input id="lastName" formControlName="lastName" class="form-control" placeholder="Enter Last Name">
+                </div>
+            </form>
+            <button mat-button matStepperNext class="btn btn-secondary">Next</button>
+    </mat-step>
+    <mat-step [stepControl]="addressFormGroup">
+        <ng-template matStepLabel>Address</ng-template>
+        <form [formGroup]="addressFormGroup">
+            <div class="form-group">
+              <label for="address1">Address Line 1:</label>
+              <input
+                id="address1"
+                formControlName="address"
+                class="form-control"
+                placeholder="Enter Address Line 1"
+              />
+            </div>
+            </form>
+        <button mat-button matStepperPrevious class="btn btn-primary">Previoue</button>
+        <button mat-button matStepperNext class="btn btn-secondary ms-2">Next</button>
+    </mat-step>
+    <mat-step label="Done">
+        <p>step 3</p>
+        @if(isSaved){
+            <p class="text-success">Data saved successfully!</p>
+        }
+        
+        <button mat-button matStepperPrevious class="btn btn-primary">Previoue</button>
+        <button mat-button class="btn btn-success ms-2" (click)="saveData()">Save</button>
+    </mat-step>
+</mat-horizontal-stepper>
+</div>
+
